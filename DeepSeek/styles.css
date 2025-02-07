@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background: #121212;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar {
+    width: 300px;
+    background: #1e1e1e;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+#board {
+    background: #000;
+    touch-action: none;
+}
+
+.control-group {
+    margin: 15px 0;
+    padding: 10px;
+    background: #2d2d2d;
+    border-radius: 4px;
+}
+
+button {
+    background: #bb86fc;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 8px 0;
+}
+
+.timeline-container {
+    height: 200px;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+#timeline {
+    width: 1000px;
+    height: 100%;
+}
+
+.history-list {
+    max-height: 300px;
+    overflow-y: auto;
+}

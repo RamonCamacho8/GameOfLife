@@ -1,0 +1,140 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #303030;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 90%; /* Adjust as needed */
+    height: 90vh;
+    background-color: #424242;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Material-like shadow */
+}
+
+/* Sidebars */
+aside {
+    width: 200px; /* Adjust as needed */
+    padding: 20px;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.left-sidebar {
+    border-right: 1px solid #555;
+}
+
+.right-sidebar {
+    border-left: 1px solid #555;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-canvas {
+    background-color: #121212;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+
+/* Controls */
+.slider-group, .button-group, .pattern-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    background: #555;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #03A9F4;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    background-color: #03A9F4;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #0288D1;
+}
+
+/* History & GIF */
+.history-container, .gif-container {
+    flex: 1;
+    padding: 10px;
+    border-top: 1px solid #555;  /* Visual separation within sidebar */
+    overflow-y: auto;
+}
+
+#history-list {
+    list-style: none;
+}
+
+#history-list li {
+    padding: 5px;
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+}
+
+#history-list li:hover {
+    background-color: #333;
+}
+
+/* Timeline */
+#timeline-container {
+    width: 90%;
+    height: 100px;
+    margin-top: 10px;
+    border: 1px solid #555;
+    background-color: #212121;
+}
+#timeline-canvas{
+    width: 100%;
+    height: 100%;
+}

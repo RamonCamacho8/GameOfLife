@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Life</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Sidebar -->
+    <div class="sidebar left-sidebar">
+      <h2>Configuration</h2>
+      <label for="density">Cell Density:</label>
+      <input type="range" id="density" min="10" max="250" value="50">
+      
+      <label for="speed">Time Step (ms):</label>
+      <input type="range" id="speed" min="0" max="600" value="200">
+
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="restart">Restart</button>
+      <button id="step-forward">Step Forward</button>
+      <button id="step-backward">Step Backward</button>
+
+      <button id="random-init">Random Initialization</button>
+      <button id="procedural-init">Procedural Generation</button>
+
+      <label for="patterns">Predefined Patterns:</label>
+      <select id="patterns">
+        <option value="glider">Glider</option>
+        <option value="pulsar">Pulsar</option>
+        <option value="gosper-glider-gun">Gosper Glider Gun</option>
+      </select>
+    </div>
+
+    <!-- Main Simulation Board -->
+    <div class="simulation-board" id="simulation-board"></div>
+
+    <!-- Right Sidebar -->
+    <div class="sidebar right-sidebar">
+      <h2>Simulation History</h2>
+      <ul id="history-list"></ul>
+
+      <h2>GIF Generation</h2>
+      <button id="generate-gif">Generate GIF</button>
+      <button id="save-gif">Save/Download GIF</button>
+
+      <h2>Live Cell Timeline</h2>
+      <canvas id="timeline-chart"></canvas>
+    </div>
+  </div>
+
+  <script src="assets/perlin.js"></script>
+  <script src="assets/gif.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

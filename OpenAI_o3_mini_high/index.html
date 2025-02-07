@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game of Life Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js for timeline chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- GIF.js for GIF generation -->
+  <script src="https://cdn.jsdelivr.net/npm/gif.js.optimized/dist/gif.js"></script>
+  <!-- Noise.js (Perlin Noise) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noisejs/2.0.0/perlin.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Sidebar: Configuration -->
+    <div class="sidebar left">
+      <h2>Configuration</h2>
+      <div class="control-group">
+        <label for="gridSizeSlider">
+          Grid Size: <span id="gridSizeValue">50</span>×<span id="gridSizeValue2">50</span>
+        </label>
+        <input type="range" id="gridSizeSlider" min="10" max="250" value="50" />
+      </div>
+      <div class="control-group">
+        <label for="speedSlider">
+          Time Step (ms): <span id="speedValue">200</span>
+        </label>
+        <input type="range" id="speedSlider" min="50" max="600" value="200" />
+      </div>
+      <div class="control-group">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="restartBtn">Restart</button>
+      </div>
+      <div class="control-group">
+        <button id="stepForwardBtn">Step Forward</button>
+        <button id="stepBackwardBtn">Step Backward</button>
+      </div>
+      <div class="control-group">
+        <button id="randomInitBtn">Random Initialization</button>
+      </div>
+      <div class="control-group">
+        <label>Procedural Generation (Perlin Noise):</label>
+        <input type="number" id="noiseSeedInput" placeholder="Seed" value="0" />
+        <button id="proceduralGenBtn">Generate</button>
+      </div>
+      <div class="control-group">
+        <label for="patternSelect">Predefined Patterns:</label>
+        <select id="patternSelect">
+          <option value="">--Select Pattern--</option>
+          <option value="glider">Glider</option>
+          <option value="pulsar">Pulsar</option>
+          <!-- Add more patterns as needed -->
+        </select>
+        <button id="addPatternBtn">Add Pattern</button>
+      </div>
+    </div>
+
+    <!-- Main Content: Simulation Board & Timeline -->
+    <div class="main">
+      <!-- Simulation Board Canvas -->
+      <canvas id="gameCanvas" width="600" height="600"></canvas>
+      <!-- Timeline Visualization -->
+      <div class="timeline-container">
+        <canvas id="timelineChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: History & GIF Generation -->
+    <div class="sidebar right">
+      <h2>History</h2>
+      <div id="simulationHistory" class="history-list">
+        <!-- Simulation history items will be injected here -->
+      </div>
+      <h2>GIF Generation</h2>
+      <div class="control-group">
+        <button id="generateGifBtn">Generate GIF</button>
+        <button id="downloadGifBtn" disabled>Download GIF</button>
+      </div>
+      <div id="gifStatus" class="gif-status"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

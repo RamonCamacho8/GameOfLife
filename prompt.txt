@@ -1,0 +1,113 @@
+Use JavaScript, HTML, and CSS (in **separate files**) to create a “Game of Life” simulation for the browser with the following features and constraints:
+
+----------
+
+## **1. Layout & Design**
+
+1.  **Fullscreen Layout**
+    
+    -   The main container (simulation board) should occupy the center of the viewport, with appropriate margins.
+    -   The browser viewport should set a fixed width and height for the simulation canvas, ensuring it scales proportionally regardless of the number of cells.
+2.  **Sidebars**
+    
+    -   **Left Sidebar (Configuration Menu)**
+        -   Sliders for adjusting cell **density** (up to a 250×250 board) and **time-step** speed (up to 600ms).
+        -   Buttons to **Start**, **Pause**, and **Restart** the simulation.
+        -   Buttons to **Advance** one step forward or one step backward.
+        -   A **Random Initialization** button to seed the board with random live cells.
+        -   A **Procedural Generation** option (using a simple Perlin Noise) with an adjustable seed.
+        -   A list or dropdown of **predefined Game of Life patterns** (e.g., Glider, Pulsar, etc.) that can be added to the board before the simulation starts.
+    -   **Right Sidebar (Simulation History & GIF Generation)**
+        -   **Simulation History** (top half): Display past simulations stored in client-side memory (e.g., in-browser memory or `localStorage` if desired). Each simulation is defined from the moment **Start** is pressed until **Restart** is pressed.
+            -   Optionally allow the user to reload a previous simulation.
+        -   **GIF Generation** (bottom half):
+            -   A button to **Generate GIF** of the last simulation, capturing **every** step as a frame.
+            -   A button to **Save/Download** the generated GIF.
+3.  **Dark Material-Like Theme**
+    
+    -   Overall styling should approximate **Material Design** principles with a **dark theme**.
+    -   Use a modern aesthetic with smooth transitions, subtle shadows, and a polished look for UI elements.
+
+----------
+
+## **2. Core Simulation Features**
+
+1.  **Fixed Board Size with Adjustable Cell Density**
+    
+    -   The physical size (in pixels) of the simulation board is fixed, but you can scale the number of cells (e.g., 10×10 up to 250×250).
+    -   A slider in the left sidebar adjusts how many cells per row and column.
+2.  **Configurable Time Steps**
+    
+    -   A slider to control how long each step lasts (e.g., 0 to 600ms).
+    -   The simulation updates on these intervals when started.
+3.  **Interactivity**
+    
+    -   **Drawing Mode**: Allow the user to click (or click-and-drag) on the board to toggle cells between alive/dead before starting or during pause.
+    -   **Start/Pause/Restart**: Self-explanatory controls.
+    -   **Step Forward/Step Backward**: Move one generation ahead or behind even if the simulation is paused.
+4.  **Initial Conditions**
+    
+    -   **Random Board**: Randomly assign cells as alive or dead based on the chosen density.
+    -   **Procedural Generation (Perlin Noise)**: Implement a simple Perlin Noise algorithm to generate initial live-cell patterns. Include an option for the user to specify a noise seed if they wish.
+    -   **Common Patterns Presets**: Provide a dropdown or list with well-known configurations (e.g., Glider, Pulsar, etc.) to place on the board.
+
+----------
+
+## **3. Simulation History & State Management**
+
+1.  **Client-Side Storage**
+    
+    -   Keep a record of each simulation’s start state, timeline, and end state in in-browser memory or `localStorage`.
+    -   If possible, preserve the history across browser sessions (using `localStorage`). If not, simply store it in memory for the current session.
+2.  **Loading Past Simulations**
+    
+    -   Show a vertical list or some interactive element in the right sidebar to let the user load old simulations back onto the main board.
+
+----------
+
+## **4. GIF Generation**
+
+1.  **Client-Side GIF Creation**
+    
+    -   Use a JavaScript library (e.g., [gif.js](https://github.com/jnordberg/gif.js) or similar) to compile frames into a GIF.
+    -   Each **simulation step** is one frame.
+    -   Ensure the user can **save/download** the final GIF file locally.
+2.  **Performance Considerations**
+    
+    -   Since every step is one frame, be mindful of large board sizes and long simulations (up to 600 steps). Provide feedback or a loading indicator while generating the GIF.
+
+----------
+
+## **5. Chronological (Time) Bar Visualization**
+
+1.  **Line Graph / Time Bar**
+    
+    -   Show the count of live cells for **each step** along a horizontal graph.
+    -   The **current step** should always appear in the **middle** of the timeline (if possible), with the option to scroll left (past steps) and right (future steps if steps were moved backward).
+    -   Use a library (e.g., [Chart.js](https://www.chartjs.org/)) or a suitable Material-like chart library to render a **spline-smoothed line**.
+    -   Update this graph in real-time after each step.
+2.  **Interactive Navigation**
+    
+    -   Allow the user to click on a point in the graph or scroll the timeline to jump directly to a specific step.
+
+----------
+
+## **6. Implementation Details**
+
+1.  **Project Structure**
+    
+    -   Use **separate files** for HTML, CSS, and JavaScript.
+    -   Include any external libraries for charts, GIF generation, and/or Perlin Noise.
+2.  **Performance**
+    
+    -   Cap the board at **250×250** cells.
+    -   Maximum **600** steps in the timeline.
+3.  **Styling**
+    
+    -   Provide a **dark theme** approximation of Material Design for the UI.
+    -   Make sure the simulation board and sidebars scale neatly on different screen sizes (responsive or fixed layout as needed).
+4.  **Testing & Validation**
+    
+    -   Ensure the game logic follows Conway’s Game of Life rules.
+    -   Validate that stepping forward/backward updates the board and timeline correctly.
+    -   Check that user-drawn cells remain properly set when starting/pausing the simulation.

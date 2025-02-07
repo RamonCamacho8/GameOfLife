@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Life</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="lib/gif.js"></script>  <!-- Or use a CDN -->
+    <script src="lib/perlin.js"></script> <!-- Or use a CDN -->
+    <!-- <script src="lib/chart.js"></script> --> <!-- Uncomment if using Chart.js, or use a CDN -->
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="left-sidebar">
+            <h2>Configuration</h2>
+
+            <div class="slider-group">
+                <label for="density">Cell Density:</label>
+                <input type="range" id="density" min="10" max="250" value="50">
+                <span id="density-value">50</span>
+            </div>
+
+            <div class="slider-group">
+                <label for="time-step">Time Step (ms):</label>
+                <input type="range" id="time-step" min="0" max="600" value="200">
+                <span id="time-step-value">200</span>
+            </div>
+
+            <div class="button-group">
+                <button id="start-btn">Start</button>
+                <button id="pause-btn">Pause</button>
+                <button id="restart-btn">Restart</button>
+                <button id="step-forward-btn">Step Forward</button>
+                <button id="step-backward-btn">Step Backward</button>
+            </div>
+
+            <div class="button-group">
+                <button id="random-btn">Random Initialization</button>
+                <button id="perlin-btn">Perlin Generation</button>
+            </div>
+
+            <div class="pattern-group">
+                <label for="pattern-select">Predefined Patterns:</label>
+                <select id="pattern-select">
+                    <option value="glider">Glider</option>
+                    <option value="pulsar">Pulsar</option>
+                    <!-- Add more patterns -->
+                </select>
+                <button id="add-pattern-btn">Add Pattern</button>
+            </div>
+
+        </aside>
+
+        <main class="main-content">
+            <canvas id="game-canvas"></canvas>
+            <div id="timeline-container">
+                <canvas id="timeline-canvas"></canvas>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="history-container">
+                <h2>Simulation History</h2>
+                <ul id="history-list"></ul>
+            </div>
+
+            <div class="gif-container">
+                <h2>GIF Generation</h2>
+                <button id="generate-gif-btn">Generate GIF</button>
+                <button id="download-gif-btn">Save GIF</button>
+                <a id="download-link" style="display:none;"></a>  <!-- Invisible link for download -->
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
